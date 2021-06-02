@@ -21,5 +21,17 @@ namespace ContosoCrafts.Website.Controllers
         {
             return this.ProductService.GetProducts();
         }
+
+        /**
+         * /products/rate?ProductId=jenlooper-cactus&Rating=1
+         * /products/rate?ProductId=jenlooper-cactus&Rating=2
+         */
+        [Route("Rate")]
+        [HttpGet]
+        public ActionResult Get([FromQuery] string ProductId, [FromQuery] int Rating)
+        {
+            ProductService.AddRating(ProductId, Rating);
+            return Ok();
+        }
     }
 }
